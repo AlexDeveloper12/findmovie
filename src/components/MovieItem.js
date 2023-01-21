@@ -1,9 +1,11 @@
 import React from "react";
+import "../styles/MovieItem.css";
 
-function MovieItem(){
+function MovieItem({movie}){
     return(
-        <div>
-            Movie Item here
+        <div className="movie-item">
+            <img src={movie.Images[2]} width={300} height={250}/>
+            {movie.Title}
         </div>
     )
 

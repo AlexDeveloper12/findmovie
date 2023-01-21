@@ -1,0 +1,5 @@
+.movie-item{
+    margin-top: 10px;
+    flex:1;
+    flex-direction: column;
+}
