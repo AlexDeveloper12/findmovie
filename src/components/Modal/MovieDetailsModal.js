@@ -1,5 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
+import MovieRating from "../MovieRating";
 
 const customStyles = {
     content: {
@@ -15,6 +16,21 @@ const customStyles = {
 ReactModal.setAppElement('#root');
 
 function MovieDetailsModal({ movie, showModal, toggleModal }) {
+
+    const renderStarRating = () => {
+
+        const ratingFloor = Math.floor(movie.imdbRating);
+        let rating = [];
+        console.log(ratingFloor);
+
+        for (var i = 0; i <= ratingFloor; i++) {
+            rating.push(<MovieRating />);
+        }
+
+        return rating;
+
+    }
+
     return (
         <div>
             <ReactModal
@@ -24,9 +40,27 @@ function MovieDetailsModal({ movie, showModal, toggleModal }) {
                 <div>
                     <button onClick={toggleModal}>X</button>
                     <div>
-                        <span>
-                            {movie.Plot}
-                        </span>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Plot: </td>
+                                    <td>{movie.Plot}</td>
+                                </tr>
+                                <tr>
+                                    <td>Runtime: </td>
+                                    <td>{movie.Runtime} </td>
+                                </tr>
+                                <tr>
+                                    <td>Release Date:</td>
+                                    <td>{movie.Released}</td>
+                                </tr>
+                                <tr>
+                                    <td>Rating:</td>
+                                    <td>{renderStarRating()}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
                     </div>
 
                 </div>
