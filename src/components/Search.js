@@ -5,7 +5,7 @@ function Search({searchValue, handleSearch, searchMovie}){
     return(
         <div className="search-movie-container">
             <input type="text" className="search-movie" onChange={(e)=>handleSearch(e.target.value)} value={searchValue} />
-            <button type="button" onClick={searchMovie}>Search</button>
+            <button type="button" className="btn-search-movie" onClick={searchMovie}>Search</button>
         </div>
         
     )

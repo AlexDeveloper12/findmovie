@@ -10,6 +10,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
   const [showMovies, setShowMovies] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios.get('movies.json')
@@ -28,14 +29,22 @@ function App() {
 
   }
 
+  const toggleModal = () =>{
+    setShowModal(!showModal);
+  }
+
   const searchForMovie = () => {
     //function to filter the movies via what the user searched for
     var updatedMovies = [...movies];
+    console.log('search');
+    console.log(search);
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
     console.log(updatedMovies);
     setMovies(updatedMovies);
     setShowMovies(true);
   }
+
+
 
 
   return (
@@ -51,7 +60,11 @@ function App() {
 
         movies.map((value, index) => {
           return (
-            <MovieItem movie={value} />
+            <MovieItem
+              movie={value}
+              showModal={showModal} 
+              toggleModal={toggleModal}
+              />
           )
 
         }) : null
