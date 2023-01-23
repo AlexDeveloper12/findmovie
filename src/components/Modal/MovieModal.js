@@ -1,15 +1,17 @@
 import React from "react";
 import ReactModal from "react-modal";
+import { FaStar } from "react-icons/fa";
 import MovieDetails from "./MovieDetails";
 
 const customStyles = {
     content: {
-        top: '30%',
+        top: '50%',
         left: '50%',
         right: '50%',
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
+        height: '80%'
     },
 };
 
@@ -23,12 +25,14 @@ function MovieDetailsModal({ movie, showModal, toggleModal }) {
                 style={customStyles}
             >
                 <div>
-                    <button className="btn" onClick={toggleModal}>X</button>
+                    
+                    <button className="btn" > <FaStar /></button>
+                    <button className="btn" style={{ float: 'right' }} onClick={toggleModal}>X</button>
                     <div>
                         <MovieDetails
                             movie={movie}
-                            />
-                        
+                        />
+
                     </div>
 
                 </div>
