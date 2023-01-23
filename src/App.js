@@ -51,7 +51,14 @@ function App() {
   }
 
   const addToFavourite = (movie) => {
-    
+
+    if (movie !== null && movie !== undefined) {
+      console.log("addToFavourite");
+      let movieObject = { movie };
+      console.log(movieObject);
+      movieObject["isFavourite"] = "1";
+      localStorage.setItem(`${movie.Title}-movie`, JSON.stringify(movieObject));
+    }
 
   }
 
@@ -63,7 +70,7 @@ function App() {
         searchMovie={searchForMovie}
       />
 
-      {showMovies ?
+      {showMovies === true && movies.length > 0 ?
         movies.map((value, index) => {
           return (
             <MovieItem
@@ -71,10 +78,11 @@ function App() {
               showModal={showModal}
               toggleModal={toggleModal}
               toggleFavourite={toggleFavourite}
+              addToFavourite={addToFavourite}
             />
           )
 
-        }) : <div>There are no movies in the database that match that title. We apologise for this</div>
+        }) : null
       }
 
     </div>

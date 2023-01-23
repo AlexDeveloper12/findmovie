@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/MovieItem.css";
 import MovieModal from "./Modal/MovieModal";
 
-function MovieItem({ movie, showModal, toggleModal,toggleFavourite }) {
+function MovieItem({ movie, showModal, toggleModal,toggleFavourite, addToFavourite }) {
     return (<>
 
         <div className="movie-item">
@@ -19,6 +19,7 @@ function MovieItem({ movie, showModal, toggleModal,toggleFavourite }) {
             showModal={showModal}
             toggleModal={toggleModal}
             toggleFavourite={toggleFavourite}
+            addToFavourite={addToFavourite}
         />
     </>
     )
