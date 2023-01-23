@@ -1,8 +1,8 @@
 import React from "react";
 import "../styles/MovieItem.css";
-import MovieDetailsModal from "./Modal/MovieModal";
+import MovieModal from "./Modal/MovieModal";
 
-function MovieItem({ movie, showModal, toggleModal }) {
+function MovieItem({ movie, showModal, toggleModal,toggleFavourite }) {
     return (<>
 
         <div className="movie-item">
@@ -14,10 +14,11 @@ function MovieItem({ movie, showModal, toggleModal }) {
             </div>
 
         </div>
-        <MovieDetailsModal
+        <MovieModal
             movie={movie}
             showModal={showModal}
             toggleModal={toggleModal}
+            toggleFavourite={toggleFavourite}
         />
     </>
     )

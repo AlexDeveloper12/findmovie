@@ -2,7 +2,7 @@ import React from "react";
 import MovieRating from "../MovieRating";
 import "../../styles/MovieDetails.css";
 
-function MovieDetails({ movie }) {
+function MovieDetails({ movie,toggleModal }) {
 
 
     const renderStarRating = () => {
@@ -65,7 +65,7 @@ function MovieDetails({ movie }) {
                 </tbody>
             </table>
             <div className="btn-bottom-container">
-                <button type="button" className="btn-bottom btn">Close</button>
+                <button type="button" className="btn-bottom btn" onClick={toggleModal}>Close</button>
             </div>
         </>
 

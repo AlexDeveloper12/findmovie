@@ -35,6 +35,10 @@ function App() {
     setShowModal(!showModal);
   }
 
+  const toggleFavourite = () =>{
+    setFavourite(!favourite);
+  }
+
   const searchForMovie = () => {
     //function to filter the movies via what the user searched for
     var updatedMovies = [...movies];
@@ -61,6 +65,7 @@ function App() {
               movie={value}
               showModal={showModal}
               toggleModal={toggleModal}
+              toggleFavourite={toggleFavourite}
             />
           )
 
