@@ -42,10 +42,7 @@ function App() {
   const searchForMovie = () => {
     //function to filter the movies via what the user searched for
     var updatedMovies = [...movies];
-    console.log('search');
-    console.log(search);
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
-    console.log(updatedMovies);
     setMovies(updatedMovies);
     setShowMovies(true);
   }
@@ -53,9 +50,7 @@ function App() {
   const addToFavourite = (movie) => {
 
     if (movie !== null && movie !== undefined) {
-      console.log("addToFavourite");
       let movieObject = { movie };
-      console.log(movieObject);
       movieObject["isFavourite"] = "1";
       localStorage.setItem(`${movie.Title}-movie`, JSON.stringify(movieObject));
     }
