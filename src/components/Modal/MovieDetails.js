@@ -28,8 +28,18 @@ function MovieDetails({ movie }) {
                         <td>{movie.Plot}</td>
                     </tr>
                     <tr>
+                        <td>
+                            Genre:
+                        </td>
+                        <td>{movie.Genre}</td>
+                    </tr>
+                    <tr>
                         <td>Runtime: </td>
                         <td>{movie.Runtime} </td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td>{movie.Rated}</td>
                     </tr>
                     <tr>
                         <td>Release Date:</td>
@@ -38,6 +48,18 @@ function MovieDetails({ movie }) {
                     <tr>
                         <td>Rating:</td>
                         <td>{renderStarRating()}</td>
+                    </tr>
+                    <tr>
+                        <td>Director</td>
+                        <td>{movie.Director}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Writer
+                        </td>
+                        <td>
+                            {movie.Writer}
+                        </td>
                     </tr>
 
                 </tbody>

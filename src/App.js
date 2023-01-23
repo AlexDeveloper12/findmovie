@@ -44,9 +44,6 @@ function App() {
     setShowMovies(true);
   }
 
-
-
-
   return (
     <div className="App">
       <Search
@@ -65,7 +62,7 @@ function App() {
             />
           )
 
-        }) : null
+        }) : <div>There are no movies in the database that match that title. We apologise for this</div>
       }
 
     </div>
