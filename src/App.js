@@ -11,8 +11,8 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [showMovies, setShowMovies] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [favourite,setFavourite] = useState(false);
-  const [favouritesList,setFavouritesList] = useState(false);
+  const [favourite, setFavourite] = useState(false);
+  const [favouritesList, setFavouritesList] = useState(false);
 
   useEffect(() => {
     axios.get('movies.json')
@@ -35,7 +35,7 @@ function App() {
     setShowModal(!showModal);
   }
 
-  const toggleFavourite = () =>{
+  const toggleFavourite = () => {
     setFavourite(!favourite);
   }
 
@@ -48,6 +48,11 @@ function App() {
     console.log(updatedMovies);
     setMovies(updatedMovies);
     setShowMovies(true);
+  }
+
+  const addToFavourite = (movie) => {
+    
+
   }
 
   return (

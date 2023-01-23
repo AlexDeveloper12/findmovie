@@ -2,7 +2,7 @@ import React from "react";
 import MovieRating from "../MovieRating";
 import "../../styles/MovieDetails.css";
 
-function MovieDetails({ movie,toggleModal }) {
+function MovieDetails({ movie, toggleModal }) {
 
 
     const renderStarRating = () => {
@@ -50,12 +50,12 @@ function MovieDetails({ movie,toggleModal }) {
                         <td>{renderStarRating()}</td>
                     </tr>
                     <tr>
-                        <td>Director</td>
+                        <td>Director:</td>
                         <td>{movie.Director}</td>
                     </tr>
                     <tr>
                         <td>
-                            Writer
+                            Writer:
                         </td>
                         <td>
                             {movie.Writer}
