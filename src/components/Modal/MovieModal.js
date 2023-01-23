@@ -23,7 +23,7 @@ function MovieDetailsModal({ movie, showModal, toggleModal }) {
                 style={customStyles}
             >
                 <div>
-                    <button onClick={toggleModal}>X</button>
+                    <button className="btn" onClick={toggleModal}>X</button>
                     <div>
                         <MovieDetails
                             movie={movie}

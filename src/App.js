@@ -29,7 +29,7 @@ function App() {
 
   }
 
-  const toggleModal = () =>{
+  const toggleModal = () => {
     setShowModal(!showModal);
   }
 
@@ -56,15 +56,13 @@ function App() {
       />
 
       {showMovies ?
-
-
         movies.map((value, index) => {
           return (
             <MovieItem
               movie={value}
-              showModal={showModal} 
+              showModal={showModal}
               toggleModal={toggleModal}
-              />
+            />
           )
 
         }) : null

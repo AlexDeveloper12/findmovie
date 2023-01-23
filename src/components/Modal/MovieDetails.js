@@ -39,9 +39,12 @@ function MovieDetails({ movie }) {
                         <td>Rating:</td>
                         <td>{renderStarRating()}</td>
                     </tr>
-                </tbody>
 
+                </tbody>
             </table>
+            <div className="btn-bottom-container">
+                <button type="button" className="btn-bottom btn">Close</button>
+            </div>
         </>
 
     )

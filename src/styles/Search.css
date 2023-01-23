@@ -6,17 +6,7 @@
     padding:10px;
 }
 
-.btn-search-movie{
-    background-color: #2d55ff;
-    border:none;
-    color:white;
-    padding:15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left: 20px;
-}
+
 
 .btn-search-movie:hover{
     cursor: pointer;

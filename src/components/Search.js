@@ -10,7 +10,7 @@ function Search({searchValue, handleSearch, searchMovie}){
                 value={searchValue}
                 placeholder="Search Movie"
                 />
-            <button type="button" className="btn-search-movie" onClick={searchMovie}>Search</button>
+            <button type="button" className="btn-search-movie btn" onClick={searchMovie}>Search</button>
         </div>
         
     )
