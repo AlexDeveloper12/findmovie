@@ -65,20 +65,23 @@ function App() {
         searchMovie={searchForMovie}
       />
 
-      {showMovies === true && movies.length > 0 ?
-        movies.map((value, index) => {
-          return (
-            <MovieItem
-              movie={value}
-              showModal={showModal}
-              toggleModal={toggleModal}
-              toggleFavourite={toggleFavourite}
-              addToFavourite={addToFavourite}
-            />
-          )
+      <div className="movie-container">
+        {showMovies === true && movies.length > 0 ?
+          movies.map((value, index) => {
+            return (
+                <MovieItem
+                  movie={value}
+                  showModal={showModal}
+                  toggleModal={toggleModal}
+                  toggleFavourite={toggleFavourite}
+                  addToFavourite={addToFavourite}
+                />
+            )
 
-        }) : null
-      }
+          }) : null
+        }
+      </div>
+
 
     </div>
   );

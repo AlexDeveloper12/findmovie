@@ -8,7 +8,7 @@ function Search({searchValue, handleSearch, searchMovie}){
                 className="search-movie" 
                 onChange={(e)=>handleSearch(e.target.value)} 
                 value={searchValue}
-                placeholder="Search Movie"
+                placeholder="Search Movie/Series"
                 />
             <button type="button" className="btn-search-movie btn" onClick={searchMovie}>Search</button>
         </div>

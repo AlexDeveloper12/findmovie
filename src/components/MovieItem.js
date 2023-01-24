@@ -2,15 +2,15 @@ import React from "react";
 import "../styles/MovieItem.css";
 import MovieModal from "./Modal/MovieModal";
 
-function MovieItem({ movie, showModal, toggleModal,toggleFavourite, addToFavourite }) {
+function MovieItem({ movie, showModal, toggleModal, toggleFavourite, addToFavourite }) {
     return (<>
 
-        <div className="movie-item">
+        <div className="movie-item" onClick={toggleModal}>
             <img src={movie.Images[2]} width={300} height={250} />
             <div>
-                <span onClick={toggleModal} >
+                <a onClick={toggleModal} >
                     {movie.Title}
-                </span>
+                </a>
             </div>
 
         </div>

@@ -48,3 +48,8 @@
   font-size: 16px;
   margin-left: 20px;
 }
+
+.movie-container{
+  display: flex;
+  flex-wrap: wrap;
+}
