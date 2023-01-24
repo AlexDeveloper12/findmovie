@@ -19,13 +19,7 @@ function App() {
       .then(response => {
         console.log(response.data);
         if (response !== null && response !== undefined) {
-
-          var newResponseData = response.data.map((value,index)=>{
-            console.log(value);
-            value["isFavourite"] = "0";
-          });
-          console.log('shouldgethere');
-          setMovies(newResponseData);
+          setMovies(response.data);
         }
       })
   }, []);
@@ -48,6 +42,7 @@ function App() {
   const searchForMovie = () => {
     //function to filter the movies via what the user searched for
     var updatedMovies = [...movies];
+    console.log(updatedMovies);
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
     setMovies(updatedMovies);
     setShowMovies(true);
@@ -75,13 +70,13 @@ function App() {
         {showMovies === true && movies.length > 0 ?
           movies.map((value, index) => {
             return (
-                <MovieItem
-                  movie={value}
-                  showModal={showModal}
-                  toggleModal={toggleModal}
-                  toggleFavourite={toggleFavourite}
-                  addToFavourite={addToFavourite}
-                />
+              <MovieItem
+                movie={value}
+                showModal={showModal}
+                toggleModal={toggleModal}
+                toggleFavourite={toggleFavourite}
+                addToFavourite={addToFavourite}
+              />
             )
 
           }) : null
