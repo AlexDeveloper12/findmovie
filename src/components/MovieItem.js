@@ -17,6 +17,7 @@ function MovieItem({movie, showModal,toggleModal}){
         <MovieDetailsModal  
             movie={movie}
             showModal={showModal}
+            toggleModal={toggleModal}
              />
         </>
     )

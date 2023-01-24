@@ -38,9 +38,12 @@ function MovieDetailsModal({ movie, showModal, toggleModal }) {
                 style={customStyles}
             >
                 <div>
+                    <div style={{float:'right'}}>
                     <button onClick={toggleModal}>X</button>
+                    </div>
+                    
                     <div>
-                        <table>
+                        <table className="movie-details-table">
                             <tbody>
                                 <tr>
                                     <td>Plot: </td>
