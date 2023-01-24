@@ -1,8 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import MovieRating from "../MovieRating";
 import "../../styles/MovieDetails.css";
+import { movieContext } from "../Context/movieContext";
 
-function MovieDetails({ movie, toggleModal }) {
+function MovieDetails() {
+
+    const {movie,togModal} = useContext(movieContext);
+    console.log(movie);
 
 
     const renderStarRating = () => {
@@ -65,7 +69,7 @@ function MovieDetails({ movie, toggleModal }) {
                 </tbody>
             </table>
             <div className="btn-bottom-container">
-                <button type="button" className="btn-bottom btn" onClick={toggleModal}>Close</button>
+                <button type="button" className="btn-bottom btn" onClick={togModal}>Close</button>
             </div>
         </>
 

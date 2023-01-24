@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import Search from './components/Search';
-import { useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieItem from './components/MovieItem';
+import { movieContext } from './components/Context/movieContext';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [favourite, setFavourite] = useState(false);
   const [favouritesList, setFavouritesList] = useState(false);
+
 
   useEffect(() => {
     axios.get('movies.json')
@@ -68,14 +70,14 @@ function App() {
         {showMovies === true && movies.length > 0 ?
           movies.map((value, index) => {
             return (
+              <movieContext.Provider value={{movie:value,togModal:toggleModal}}>
               <MovieItem
-                movie={value}
                 showModal={showModal}
-                toggleModal={toggleModal}
                 toggleFavourite={toggleFavourite}
                 addToFavourite={addToFavourite}
                 isFavourite={movies["isFavourite"]}
               />
+              </movieContext.Provider>
             )
 
           }) : null

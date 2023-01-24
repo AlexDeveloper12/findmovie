@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactModal from "react-modal";
 import { FaStar } from "react-icons/fa";
 import MovieDetails from "./MovieDetails";
+import { movieContext } from "../Context/movieContext";
 
 const customStyles = {
     content: {
@@ -17,7 +18,10 @@ const customStyles = {
 
 ReactModal.setAppElement('#root');
 
-function MovieModal({ movie, showModal, toggleModal,toggleFavourite, isFavourite,addToFavourite }) {
+function MovieModal({ showModal, toggleFavourite, isFavourite, addToFavourite }) {
+
+    const {movie,togModal} = useContext(movieContext);
+
     return (
         <div>
             <ReactModal
@@ -25,13 +29,12 @@ function MovieModal({ movie, showModal, toggleModal,toggleFavourite, isFavourite
                 style={customStyles}
             >
                 <div>
-                    
-                    <button className="btn" onClick={()=>addToFavourite(movie)} > <FaStar color={isFavourite  ? "yellow" : "white"} /></button>
-                    <button className="btn" style={{ float: 'right' }} onClick={toggleModal}>X</button>
+
+                    <button className="btn" onClick={() => addToFavourite(movie)} > <FaStar color={isFavourite ? "yellow" : "white"} /></button>
+                    <button className="btn" style={{ float: 'right' }} onClick={togModal}>X</button>
                     <div>
                         <MovieDetails
-                            movie={movie} 
-                            toggleModal={toggleModal}                           
+                            toggleModal={togModal}
                         />
 
                     </div>
