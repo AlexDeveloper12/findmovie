@@ -19,7 +19,13 @@ function App() {
       .then(response => {
         console.log(response.data);
         if (response !== null && response !== undefined) {
-          setMovies(response.data);
+
+          var newResponseData = response.data.map((value,index)=>{
+            console.log(value);
+            value["isFavourite"] = "0";
+          });
+          console.log('shouldgethere');
+          setMovies(newResponseData);
         }
       })
   }, []);
