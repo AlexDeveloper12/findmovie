@@ -17,7 +17,6 @@ function App() {
   useEffect(() => {
     axios.get('movies.json')
       .then(response => {
-        console.log(response.data);
         if (response !== null && response !== undefined) {
           setMovies(response.data);
         }
@@ -28,7 +27,6 @@ function App() {
     console.log(searchText);
     setSearch(searchText);
     setShowMovies(false);
-
   }
 
   const toggleModal = () => {
@@ -49,11 +47,11 @@ function App() {
   }
 
   const addToFavourite = (movie) => {
-
+    console.log(movie);
     if (movie !== null && movie !== undefined) {
-      let movieObject = { movie };
-      movieObject["isFavourite"] = "1";
-      localStorage.setItem(`${movie.Title}-movie`, JSON.stringify(movieObject));
+      movie["isFavourite"] = "1";
+      localStorage.setItem(`${movie.Title}-movie`, JSON.stringify(movie));
+      console.log(movie);
     }
 
   }
@@ -76,6 +74,7 @@ function App() {
                 toggleModal={toggleModal}
                 toggleFavourite={toggleFavourite}
                 addToFavourite={addToFavourite}
+                isFavourite={movies["isFavourite"]}
               />
             )
 

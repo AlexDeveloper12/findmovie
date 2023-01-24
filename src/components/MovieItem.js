@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/MovieItem.css";
 import MovieModal from "./Modal/MovieModal";
 
-function MovieItem({ movie, showModal, toggleModal, toggleFavourite, addToFavourite }) {
+function MovieItem({ movie, showModal, toggleModal, toggleFavourite, addToFavourite,isFavourite }) {
     return (<>
 
         <div className="movie-item" onClick={toggleModal}>
@@ -20,6 +20,7 @@ function MovieItem({ movie, showModal, toggleModal, toggleFavourite, addToFavour
             toggleModal={toggleModal}
             toggleFavourite={toggleFavourite}
             addToFavourite={addToFavourite}
+            isFavourite={isFavourite}
         />
     </>
     )
