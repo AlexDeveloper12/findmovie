@@ -70,11 +70,10 @@ function App() {
         {showMovies === true && movies.length > 0 ?
           movies.map((value, index) => {
             return (
-              <movieContext.Provider value={{movie:value,togModal:toggleModal}}>
+              <movieContext.Provider value={{movie:value,togModal:toggleModal,addFav:addToFavourite}}>
               <MovieItem
                 showModal={showModal}
                 toggleFavourite={toggleFavourite}
-                addToFavourite={addToFavourite}
                 isFavourite={movies["isFavourite"]}
               />
               </movieContext.Provider>

@@ -18,9 +18,9 @@ const customStyles = {
 
 ReactModal.setAppElement('#root');
 
-function MovieModal({ showModal, toggleFavourite, isFavourite, addToFavourite }) {
+function MovieModal({ showModal, toggleFavourite, isFavourite }) {
 
-    const {movie,togModal} = useContext(movieContext);
+    const {movie,togModal,addFav} = useContext(movieContext);
 
     return (
         <div>
@@ -30,7 +30,7 @@ function MovieModal({ showModal, toggleFavourite, isFavourite, addToFavourite })
             >
                 <div>
 
-                    <button className="btn" onClick={() => addToFavourite(movie)} > <FaStar color={isFavourite ? "yellow" : "white"} /></button>
+                    <button className="btn" onClick={() => addFav(movie)} > <FaStar color={isFavourite ? "yellow" : "white"} /></button>
                     <button className="btn" style={{ float: 'right' }} onClick={togModal}>X</button>
                     <div>
                         <MovieDetails
