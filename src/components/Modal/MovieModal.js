@@ -21,7 +21,7 @@ ReactModal.setAppElement('#root');
 
 function MovieModal({ showModal, isFavourite }) {
 
-    const {movie,togModal,addFav} = useContext(movieContext);
+    const { movie, togModal, addFav } = useContext(movieContext);
 
     return (
         <div>
@@ -35,7 +35,6 @@ function MovieModal({ showModal, isFavourite }) {
                     <button className="btn" style={{ float: 'right' }} onClick={togModal}>X</button>
                     <div>
                         <MovieDetails
-                            toggleModal={togModal}
                         />
 
                     </div>
@@ -52,6 +51,6 @@ function MovieModal({ showModal, isFavourite }) {
 export default MovieModal;
 
 MovieModal.propTypes = {
-    showModal:propTypes.bool,
-    isFavourite:propTypes.string
+    showModal: propTypes.bool,
+    isFavourite: propTypes.string
 }
