@@ -1,9 +1,10 @@
 import React,{useContext} from "react";
+import propTypes from "prop-types";
 import "../styles/MovieItem.css";
 import MovieModal from "./Modal/MovieModal";
 import { movieContext } from "./Context/movieContext";
 
-function MovieItem({ showModal, toggleFavourite, addToFavourite,isFavourite }) {
+function MovieItem({ showModal, toggleFavourite,isFavourite }) {
 
     const {movie,togModal} = useContext(movieContext);
     return (<>
@@ -28,3 +29,9 @@ function MovieItem({ showModal, toggleFavourite, addToFavourite,isFavourite }) {
 }
 
 export default MovieItem;
+
+MovieItem.propTypes = {
+    showModal:propTypes.bool,
+    toggleFavourite:propTypes.func,
+    isFavourite:propTypes.string
+}
