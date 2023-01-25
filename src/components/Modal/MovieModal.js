@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ReactModal from "react-modal";
 import { FaStar } from "react-icons/fa";
+import propTypes from "prop-types";
 import MovieDetails from "./MovieDetails";
 import { movieContext } from "../Context/movieContext";
 
@@ -49,3 +50,8 @@ function MovieModal({ showModal, isFavourite }) {
 }
 
 export default MovieModal;
+
+MovieModal.propTypes = {
+    showModal:propTypes.bool,
+    isFavourite:propTypes.string
+}
