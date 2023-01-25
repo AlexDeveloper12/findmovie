@@ -20,7 +20,6 @@ function MovieItem({ showModal, toggleFavourite,isFavourite }) {
         </div>
         <MovieModal
             showModal={showModal}
-            toggleFavourite={toggleFavourite}
             isFavourite={isFavourite}
         />
     </>

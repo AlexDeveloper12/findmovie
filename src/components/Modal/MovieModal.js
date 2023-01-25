@@ -18,7 +18,7 @@ const customStyles = {
 
 ReactModal.setAppElement('#root');
 
-function MovieModal({ showModal, toggleFavourite, isFavourite }) {
+function MovieModal({ showModal, isFavourite }) {
 
     const {movie,togModal,addFav} = useContext(movieContext);
 
