@@ -1,4 +1,5 @@
 import React from "react";
+import propTypes from "prop-types";
 import "../styles/Search.css";
 
 function Search({searchValue, handleSearch, searchMovie}){
@@ -17,3 +18,9 @@ function Search({searchValue, handleSearch, searchMovie}){
 }
 
 export default Search;
+
+Search.propTypes = {
+    searchValue:propTypes.string,
+    handleSearch:propTypes.func,
+    searchMovie:propTypes.func
+}
