@@ -10,14 +10,16 @@ function MovieItem({ showModal, toggleFavourite,isFavourite }) {
     return (<>
 
         <div className="movie-item" onClick={togModal}>
-            <img src={movie.Poster} width={300} height={250} />
             <div>
-                <a onClick={togModal} >
+            <img src={movie.Poster} width={300} height={250} />
+            </div>
+            <div>
+                <a onClick={togModal} className="unbounded-font" >
                     {movie.Title} &nbsp;
                     ({movie.Year})
                 </a>
-                <div>
-                <span>{movie.Metascore !== "N/A" ? `Metascore: ${movie.Metascore}%` : "Metascore not available" }</span>
+                <div style={{marginTop:'10px'}}>
+                <span className="unbounded-font">{movie.Metascore !== "N/A" ? `Metascore: ${movie.Metascore}%` : "Metascore not available" }</span>
                 </div>
             </div>
 

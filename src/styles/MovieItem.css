@@ -9,3 +9,7 @@
     transition: 0.3s;
     padding:1%;
 }
+
+.unbounded-font{
+    font-family: 'Unbounded', cursive;
+}

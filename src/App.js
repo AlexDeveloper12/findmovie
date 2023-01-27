@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieItem from './components/MovieItem';
 import { movieContext } from './components/Context/movieContext';
+import Genres from './components/Genres';
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [favourite, setFavourite] = useState(false);
   const [favouritesList, setFavouritesList] = useState(false);
+
+  const genres = ["Action", "Adventure", "Biography", "Comedy", "Crime", "Drama", "Fantasy", "History", "Horror", "Sci-Fi", "Thriller"]
 
 
   useEffect(() => {
@@ -66,16 +69,34 @@ function App() {
         searchMovie={searchForMovie}
       />
 
+      <div style={{marginTop:'1%'}}>
+
+        {
+          genres !== null ?
+
+            genres.map((value) => {
+              return (
+                <Genres
+                  genreItem={value}
+                />
+              )
+            }) : null
+        }
+
+      </div>
+
+
+
       <div className="movie-container">
-        {showMovies === true && movies.length > 0 ?
+        {movies !== null && movies.length > 0 ?
           movies.map((value, index) => {
             return (
-              <movieContext.Provider value={{movie:value,togModal:toggleModal,addFav:addToFavourite}}>
-              <MovieItem
-                showModal={showModal}
-                toggleFavourite={toggleFavourite}
-                isFavourite={movies["isFavourite"]}
-              />
+              <movieContext.Provider value={{ movie: value, togModal: toggleModal, addFav: addToFavourite }}>
+                <MovieItem
+                  showModal={showModal}
+                  toggleFavourite={toggleFavourite}
+                  isFavourite={movies["isFavourite"]}
+                />
               </movieContext.Provider>
             )
 

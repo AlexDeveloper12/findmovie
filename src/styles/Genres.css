@@ -1,0 +1,13 @@
+
+.genre-item{
+    padding:5px;
+    background-color: #2d55ff;
+    color:white;
+    border-radius: 10px;
+}
+
+.genre-item:hover{
+    color:#2d55ff;
+    background-color: white;
+    cursor: pointer;
+}
