@@ -1,0 +1,1 @@
+export const movieGenreList = ["All", "Action", "Adventure", "Biography", "Comedy", "Crime", "Drama", "Fantasy", "History", "Horror", "Sci-Fi", "Thriller"];

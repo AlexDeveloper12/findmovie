@@ -6,6 +6,7 @@ import axios from 'axios';
 import MovieItem from './components/MovieItem';
 import { movieContext } from './components/Context/movieContext';
 import Genres from './components/Genres';
+import { movieGenreList } from './MovieGenreList';
 
 function App() {
 
@@ -16,8 +17,7 @@ function App() {
   const [favourite, setFavourite] = useState(false);
   const [favouritesList, setFavouritesList] = useState(false);
   const [movieCategoryFilter, setMovieCategoryFilter] = useState([]);
-
-  const genres = ["All", "Action", "Adventure", "Biography", "Comedy", "Crime", "Drama", "Fantasy", "History", "Horror", "Sci-Fi", "Thriller"]
+  const [chosenCategory,setChosenCategory] = useState("");
 
   useEffect(() => {
     GetMovies();
@@ -93,9 +93,9 @@ function App() {
       <div style={{ marginTop: '2%' }}>
 
         {
-          genres !== null ?
+          movieGenreList !== null ?
 
-            genres.map((value) => {
+          movieGenreList.map((value) => {
               return (
                 <Genres
                   genreItem={value}
