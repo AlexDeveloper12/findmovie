@@ -45,7 +45,7 @@ function App() {
     console.log(updatedMovies);
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
     setMovies(updatedMovies);
-    setShowMovies(true);
+    //setShowMovies(true);
   }
 
   const addToFavourite = (movie) => {
