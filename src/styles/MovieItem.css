@@ -13,3 +13,7 @@
 .unbounded-font{
     font-family: 'Unbounded', cursive;
 }
+
+.movie-poster{
+    max-width: 100%;
+}

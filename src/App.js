@@ -15,19 +15,24 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [favourite, setFavourite] = useState(false);
   const [favouritesList, setFavouritesList] = useState(false);
-  const [categoryFilter,setCategoryFilter] = useState("");
+  const [movieCategoryFilter, setMovieCategoryFilter] = useState([]);
 
-  const genres = ["Action", "Adventure", "Biography", "Comedy", "Crime", "Drama", "Fantasy", "History", "Horror", "Sci-Fi", "Thriller"]
-
+  const genres = ["All", "Action", "Adventure", "Biography", "Comedy", "Crime", "Drama", "Fantasy", "History", "Horror", "Sci-Fi", "Thriller"]
 
   useEffect(() => {
+    GetMovies();
+  }, []);
+
+  const GetMovies = () => {
     axios.get('movies.json')
       .then(response => {
         if (response !== null && response !== undefined) {
           setMovies(response.data);
+          setMovieCategoryFilter(response.data);
         }
       })
-  }, []);
+
+  }
 
   const handleSearch = (searchText) => {
     console.log(searchText);
@@ -45,11 +50,11 @@ function App() {
 
   const searchForMovie = () => {
     //function to filter the movies via what the user searched for
-    var updatedMovies = [...movies];
+    var updatedMovies = [...movieCategoryFilter];
     console.log(updatedMovies);
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
-    setMovies(updatedMovies);
-    //setShowMovies(true);
+    setMovieCategoryFilter(updatedMovies);
+    
   }
 
   const addToFavourite = (movie) => {
@@ -57,27 +62,25 @@ function App() {
     if (movie !== null && movie !== undefined) {
       movie["isFavourite"] = "1";
       localStorage.setItem(`${movie.Title}-movie`, JSON.stringify(movie));
-      console.log(movie);
     }
 
   }
 
-  const filterFilmsByCategory = (categoryChosen) =>{
-
-    setCategoryFilter(categoryChosen);
+  const filterMoviesByCategory = (categoryChosen) => {
     console.log(categoryChosen);
 
-    var filteredMovies = [...movies];
+    var filteredMovies = [];
 
-    
+    if (categoryChosen === "All") {
+      filteredMovies = movies;
+    } else {
+      filteredMovies = movies.filter(movie => {
+        return movie.Genre.includes(categoryChosen);
+      });
+    }
 
-    
-
-    //when a user clicks on the category choice the movie state will need to filter
-    //movies based on the genres array found in movies.json
+    setMovieCategoryFilter(filteredMovies);
   }
-
-
 
   return (
     <div className="App">
@@ -87,7 +90,7 @@ function App() {
         searchMovie={searchForMovie}
       />
 
-      <div style={{marginTop:'1%'}}>
+      <div style={{ marginTop: '2%' }}>
 
         {
           genres !== null ?
@@ -96,7 +99,7 @@ function App() {
               return (
                 <Genres
                   genreItem={value}
-                  handleFilter={filterFilmsByCategory}
+                  handleFilter={filterMoviesByCategory}
                 />
               )
             }) : null
@@ -107,14 +110,14 @@ function App() {
 
 
       <div className="movie-container">
-        {movies !== null && movies.length > 0 ?
-          movies.map((value, index) => {
+        {movieCategoryFilter !== null && movieCategoryFilter.length > 0 ?
+          movieCategoryFilter.map((value, index) => {
             return (
               <movieContext.Provider value={{ movie: value, togModal: toggleModal, addFav: addToFavourite }}>
                 <MovieItem
                   showModal={showModal}
                   toggleFavourite={toggleFavourite}
-                  isFavourite={movies["isFavourite"]}
+                  isFavourite={movieCategoryFilter["isFavourite"]}
                 />
               </movieContext.Provider>
             )

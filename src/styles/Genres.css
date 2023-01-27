@@ -1,4 +1,9 @@
 
+.genre-item-container{
+    margin:15px;
+    display:inline
+}
+
 .genre-item{
     padding:5px;
     background-color: #2d55ff;
@@ -11,3 +16,4 @@
     background-color: white;
     cursor: pointer;
 }
+

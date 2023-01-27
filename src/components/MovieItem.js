@@ -11,7 +11,7 @@ function MovieItem({ showModal, toggleFavourite,isFavourite }) {
 
         <div className="movie-item" onClick={togModal}>
             <div>
-            <img src={movie.Poster} width={300} height={250} />
+            <img src={movie.Poster} className="movie-poster" alt={movie.Title} />
             </div>
             <div>
                 <a onClick={togModal} className="unbounded-font" >
