@@ -15,6 +15,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [favourite, setFavourite] = useState(false);
   const [favouritesList, setFavouritesList] = useState(false);
+  const [categoryFilter,setCategoryFilter] = useState("");
 
   const genres = ["Action", "Adventure", "Biography", "Comedy", "Crime", "Drama", "Fantasy", "History", "Horror", "Sci-Fi", "Thriller"]
 
@@ -61,6 +62,23 @@ function App() {
 
   }
 
+  const filterFilmsByCategory = (categoryChosen) =>{
+
+    setCategoryFilter(categoryChosen);
+    console.log(categoryChosen);
+
+    var filteredMovies = [...movies];
+
+    
+
+    
+
+    //when a user clicks on the category choice the movie state will need to filter
+    //movies based on the genres array found in movies.json
+  }
+
+
+
   return (
     <div className="App">
       <Search
@@ -78,6 +96,7 @@ function App() {
               return (
                 <Genres
                   genreItem={value}
+                  handleFilter={filterFilmsByCategory}
                 />
               )
             }) : null
