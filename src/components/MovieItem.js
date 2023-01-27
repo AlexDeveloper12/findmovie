@@ -13,7 +13,7 @@ function MovieItem({ showModal, toggleFavourite,isFavourite }) {
             <div>
             <img src={movie.Poster} className="movie-poster" alt={movie.Title} />
             </div>
-            <div>
+            <div style={{minWidth:'50%'}} className="movie-main-info-container">
                 <a onClick={togModal} className="unbounded-font" >
                     {movie.Title} &nbsp;
                     ({movie.Year})

@@ -17,7 +17,7 @@ function App() {
   const [favourite, setFavourite] = useState(false);
   const [favouritesList, setFavouritesList] = useState(false);
   const [movieCategoryFilter, setMovieCategoryFilter] = useState([]);
-  const [chosenCategory,setChosenCategory] = useState("");
+  const [chosenCategory, setChosenCategory] = useState("");
 
   useEffect(() => {
     GetMovies();
@@ -54,7 +54,7 @@ function App() {
     console.log(updatedMovies);
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
     setMovieCategoryFilter(updatedMovies);
-    
+
   }
 
   const addToFavourite = (movie) => {
@@ -68,6 +68,7 @@ function App() {
 
   const filterMoviesByCategory = (categoryChosen) => {
     console.log(categoryChosen);
+    setChosenCategory(categoryChosen);
 
     var filteredMovies = [];
 
@@ -95,7 +96,7 @@ function App() {
         {
           movieGenreList !== null ?
 
-          movieGenreList.map((value) => {
+            movieGenreList.map((value) => {
               return (
                 <Genres
                   genreItem={value}
@@ -107,7 +108,13 @@ function App() {
 
       </div>
 
-
+      <div className="chosen-category-container">
+        {
+          chosenCategory !== "" ?
+            <span className="unbounded-font" style={{ marginLeft: '10px' }}>Category: {chosenCategory}</span>
+            : null
+        }
+      </div>
 
       <div className="movie-container">
         {movieCategoryFilter !== null && movieCategoryFilter.length > 0 ?
