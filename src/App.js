@@ -7,6 +7,7 @@ import MovieItem from './components/MovieItem';
 import { movieContext } from './components/Context/movieContext';
 import Genres from './components/Genres';
 import { movieGenreList } from './MovieGenreList';
+import Favourites from './components/Favourites';
 
 function App() {
 
@@ -15,12 +16,13 @@ function App() {
   const [showMovies, setShowMovies] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [favourite, setFavourite] = useState(false);
-  const [favouritesList, setFavouritesList] = useState(false);
+  const [favouritesList, setFavouritesList] = useState([]);
   const [movieCategoryFilter, setMovieCategoryFilter] = useState([]);
   const [chosenCategory, setChosenCategory] = useState("");
 
   useEffect(() => {
     GetMovies();
+    getAllFavourites();
   }, []);
 
   const GetMovies = () => {
@@ -83,6 +85,24 @@ function App() {
     setMovieCategoryFilter(filteredMovies);
   }
 
+  const getAllFavourites = () => {
+    const favList = [];
+    setFavouritesList([]);
+    if (localStorage.length > 0) {
+
+      for (var i = 0; i < localStorage.length; i++) {
+        // console.log(JSON.parse(localStorage.getItem(localStorage.key(i))))
+        favList.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+      }
+
+      setFavouritesList(favList);
+    }
+  }
+
+  const removeFromFavourites = () =>{
+    
+  }
+
   return (
     <div className="App">
       <Search
@@ -90,6 +110,23 @@ function App() {
         handleSearch={handleSearch}
         searchMovie={searchForMovie}
       />
+
+      {
+        
+        favouritesList.length > 0 && favouritesList !== null ?
+      
+          favouritesList.map((value) => {
+            return (
+
+      <Favourites
+        favouriteItem={value}
+      />
+      )
+          })
+      :<div> There are currently no values in the Favourites list.</div>
+      }
+
+
 
       <div style={{ marginTop: '2%' }}>
 
