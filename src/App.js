@@ -41,7 +41,6 @@ function App() {
   }
 
   const handleSearch = (searchText) => {
-    console.log(searchText);
     setSearch(searchText);
     setShowMovies(false);
   }
@@ -57,17 +56,18 @@ function App() {
   const searchForMovie = () => {
     //function to filter the movies via what the user searched for
     var updatedMovies = [...movieCategoryFilter];
-    console.log(updatedMovies);
+    
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
     setMovieCategoryFilter(updatedMovies);
 
   }
 
   const addToFavourite = (movie) => {
-    console.log(movie);
+    
     if (movie !== null && movie !== undefined) {
       movie["isFavourite"] = "1";
-      localStorage.setItem(`${movie.Title}-movie`, JSON.stringify(movie));
+      movie.Title.trim();
+      localStorage.setItem(`${movie.ID}`, JSON.stringify(movie));
     }
 
   }
@@ -95,7 +95,6 @@ function App() {
     if (localStorage.length > 0) {
 
       for (var i = 0; i < localStorage.length; i++) {
-        // console.log(JSON.parse(localStorage.getItem(localStorage.key(i))))
         favList.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
       }
 
@@ -113,13 +112,13 @@ function App() {
     //if so we splice the array
     if (objWithId > -1) {
       updatedFavourites.splice(updatedFavourites, 1);
+      localStorage.removeItem(entertainmentID);
+      //remove from local storage with key which is the movie/series name
       
     }
     //set favourites list and close modal without passing in movie id
     setFavouritesList(updatedFavourites);
     toggleDelMovModal(-1);
-
-
   }
 
   const toggleDelMovModal = (movieID) => {

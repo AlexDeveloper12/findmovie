@@ -11,6 +11,8 @@ ReactModal.setAppElement('#root');
 function MovieModal({ showModal, isFavourite }) {
 
     const { movie, togModal, addFav } = useContext(movieContext);
+    console.log('moviemodal');
+    console.log(movie);
 
     return (
         <div>

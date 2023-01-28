@@ -6,9 +6,6 @@ import { movieContext } from "../Context/movieContext";
 function MovieDetails() {
 
     const {movie,togModal} = useContext(movieContext);
-    console.log(movie);
-
-
     const renderStarRating = () => {
 
         const ratingFloor = Math.floor(movie.imdbRating);

@@ -3,7 +3,6 @@ import { FaTrash } from "react-icons/fa";
 import DeleteFavouriteModal from "./Modal/DeleteFavouriteModal";
 
 function Favourites({ favouriteItem, toggleDeleteModal, deleteMovie, isModalOpen,index }) {
-    console.log(favouriteItem);
     return (
         <>
             <tr>
