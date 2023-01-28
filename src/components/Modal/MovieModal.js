@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 import propTypes from "prop-types";
 import MovieDetails from "./MovieDetails";
 import { movieContext } from "../Context/movieContext";
-import { customStyles } from "./CustomStyles";
+import { movieInfoCustomStyles } from "./CustomStyles";
 
 ReactModal.setAppElement('#root');
 
@@ -16,7 +16,7 @@ function MovieModal({ showModal, isFavourite }) {
         <div>
             <ReactModal
                 isOpen={showModal}
-                style={customStyles}
+                style={movieInfoCustomStyles}
             >
                 <div>
 
