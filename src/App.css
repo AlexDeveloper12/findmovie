@@ -40,7 +40,7 @@
 }
 
 .btn{
-  background-color: #2d55ff;
+  
   border:none;
   color:white;
   padding:15px 32px;
@@ -63,4 +63,12 @@
   flex-direction:column;
   margin-left:20px;
   float:left;
+}
+
+.btn-ok{
+  background-color: #2d55ff;
+}
+
+.btn-cancel{
+  background-color: #d91e18;
 }

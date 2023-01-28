@@ -69,7 +69,7 @@ function MovieDetails() {
                 </tbody>
             </table>
             <div className="btn-bottom-container">
-                <button type="button" className="btn-bottom btn" onClick={togModal}>Close</button>
+                <button type="button" className="btn-bottom btn btn-ok" onClick={togModal}>Close</button>
             </div>
         </>
 

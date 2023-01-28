@@ -19,6 +19,7 @@ function App() {
   const [favouritesList, setFavouritesList] = useState([]);
   const [movieCategoryFilter, setMovieCategoryFilter] = useState([]);
   const [chosenCategory, setChosenCategory] = useState("");
+  const [toggleDeleteModalValue, setToggleDeleteModal] = useState(false);
 
   useEffect(() => {
     GetMovies();
@@ -99,8 +100,12 @@ function App() {
     }
   }
 
-  const removeFromFavourites = () =>{
-    
+  const removeFromFavourites = (movieID) => {
+
+  }
+
+  const toggleDelMovModal = () => {
+    setToggleDeleteModal(!toggleDeleteModalValue);
   }
 
   return (
@@ -112,18 +117,21 @@ function App() {
       />
 
       {
-        
+
         favouritesList.length > 0 && favouritesList !== null ?
-      
+
           favouritesList.map((value) => {
             return (
 
-      <Favourites
-        favouriteItem={value}
-      />
-      )
+              <Favourites
+                favouriteItem={value}
+                deleteMovie={removeFromFavourites}
+                toggleDeleteModal={toggleDelMovModal}
+                isModalOpen={toggleDeleteModalValue}
+              />
+            )
           })
-      :<div> There are currently no values in the Favourites list.</div>
+          : <div> There are currently no values in the Favourites list.</div>
       }
 
 

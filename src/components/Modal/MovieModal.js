@@ -4,18 +4,7 @@ import { FaStar } from "react-icons/fa";
 import propTypes from "prop-types";
 import MovieDetails from "./MovieDetails";
 import { movieContext } from "../Context/movieContext";
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: '50%',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        height: '80%'
-    },
-};
+import { customStyles } from "./CustomStyles";
 
 ReactModal.setAppElement('#root');
 
@@ -31,8 +20,8 @@ function MovieModal({ showModal, isFavourite }) {
             >
                 <div>
 
-                    <button className="btn" onClick={() => addFav(movie)} > <FaStar color={isFavourite ? "yellow" : "white"} /></button>
-                    <button className="btn" style={{ float: 'right' }} onClick={togModal}>X</button>
+                    <button className="btn btn-ok" onClick={() => addFav(movie)} > <FaStar color={isFavourite ? "yellow" : "white"} /></button>
+                    <button className="btn btn-ok" style={{ float: 'right' }} onClick={togModal}>X</button>
                     <div>
                         <MovieDetails
                         />
