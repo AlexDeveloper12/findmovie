@@ -8,6 +8,8 @@ import { movieContext } from './components/Context/movieContext';
 import Genres from './components/Genres';
 import { movieGenreList } from './MovieGenreList';
 import Favourites from './components/Favourites';
+import ChosenCategory from './components/ChosenCategory';
+import DeleteFavouriteModal from './components/Modal/DeleteFavouriteModal';
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
   const [movieCategoryFilter, setMovieCategoryFilter] = useState([]);
   const [chosenCategory, setChosenCategory] = useState("");
   const [toggleDeleteModalValue, setToggleDeleteModal] = useState(false);
+  const [favListMovieIDChosen, setfavListMovieIDChosen] = useState("");
 
   useEffect(() => {
     GetMovies();
@@ -100,18 +103,29 @@ function App() {
     }
   }
 
-  const removeFromFavourites = (movieID) => {
-    favouritesList = favouritesList.filter((value)=>{
-      return value.ID !== movieID;
-    });
+  const removeFromFavourites = (entertainmentID) => {
 
-    console.log(favouritesList);
+    var updatedFavourites = [...favouritesList];
 
-    setFavouritesList(favouritesList);
+    //finding if there is a value in the array that has an id equal to one passed in
+    const objWithId = updatedFavourites.findIndex((obj) => obj.ID === entertainmentID);
+
+    //if so we splice the array
+    if (objWithId > -1) {
+      updatedFavourites.splice(updatedFavourites, 1);
+      
+    }
+    //set favourites list and close modal without passing in movie id
+    setFavouritesList(updatedFavourites);
+    toggleDelMovModal(-1);
+
 
   }
 
-  const toggleDelMovModal = () => {
+  const toggleDelMovModal = (movieID) => {
+    if (movieID > -1) {
+      setfavListMovieIDChosen(movieID);
+    }
     setToggleDeleteModal(!toggleDeleteModalValue);
   }
 
@@ -123,25 +137,50 @@ function App() {
         searchMovie={searchForMovie}
       />
 
+      <table className="favourite-container">
+        <thead>
+          <tr>
+            <th colSpan={2}>Favourites list</th>
+          </tr>
+
+
+          <tr>
+            <th>Movie/Series</th>
+            <th>Action(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            favouritesList.length > 0 && favouritesList !== null ?
+              favouritesList.map((value, index) => {
+                return (
+
+                  <Favourites
+                    favouriteItem={value}
+                    deleteMovie={removeFromFavourites}
+                    toggleDeleteModal={toggleDelMovModal}
+                    isModalOpen={toggleDeleteModalValue}
+                  />
+                )
+              })
+              : <tr> <td> There are currently no values in the Favourites list.</td></tr>
+
+          }
+        </tbody>
+      </table>
+
       {
+        toggleDeleteModalValue ?
 
-        favouritesList.length > 0 && favouritesList !== null ?
+          <DeleteFavouriteModal
+            movieID={favListMovieIDChosen}
+            isModalOpen={toggleDeleteModalValue}
+            toggleModal={toggleDelMovModal}
+            deleteMovie={removeFromFavourites}
+          />
 
-          favouritesList.map((value) => {
-            return (
-
-              <Favourites
-                favouriteItem={value}
-                deleteMovie={removeFromFavourites}
-                toggleDeleteModal={toggleDelMovModal}
-                isModalOpen={toggleDeleteModalValue}
-              />
-            )
-          })
-          : <div> There are currently no values in the Favourites list.</div>
+          : null
       }
-
-
 
       <div style={{ marginTop: '2%' }}>
 
@@ -160,13 +199,9 @@ function App() {
 
       </div>
 
-      <div className="chosen-category-container">
-        {
-          chosenCategory !== "" ?
-            <span className="unbounded-font" style={{ marginLeft: '10px' }}>Category: {chosenCategory}</span>
-            : null
-        }
-      </div>
+      <ChosenCategory
+        chosenCategory={chosenCategory}
+      />
 
       <div className="movie-container">
         {movieCategoryFilter !== null && movieCategoryFilter.length > 0 ?

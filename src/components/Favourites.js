@@ -2,19 +2,24 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import DeleteFavouriteModal from "./Modal/DeleteFavouriteModal";
 
-function Favourites({ favouriteItem,toggleDeleteModal,deleteMovie,isModalOpen }) {
+function Favourites({ favouriteItem, toggleDeleteModal, deleteMovie, isModalOpen,index }) {
+    console.log(favouriteItem);
     return (
-        <div>
-            <span>{favouriteItem["Title"]}</span>
-            <span><FaTrash color="red" onClick={toggleDeleteModal}/></span>
-            
-            <DeleteFavouriteModal
-                movieID={favouriteItem["ID"]}
-                isModalOpen={isModalOpen}
-                toggleModal={toggleDeleteModal}
-                deleteMovie={deleteMovie}
-            />
-        </div>
+        <>
+            <tr>
+                <td>
+                    <span>{favouriteItem["Title"]}</span>
+                </td>
+                <td>
+                    <span><FaTrash color="red" onClick={()=>toggleDeleteModal(favouriteItem["ID"])} /></span>
+                </td>
+
+            </tr>
+
+           
+        </>
+
+
     )
 }
 
