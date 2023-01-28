@@ -101,6 +101,13 @@ function App() {
   }
 
   const removeFromFavourites = (movieID) => {
+    favouritesList = favouritesList.filter((value)=>{
+      return value.ID !== movieID;
+    });
+
+    console.log(favouritesList);
+
+    setFavouritesList(favouritesList);
 
   }
 
