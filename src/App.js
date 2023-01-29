@@ -68,7 +68,7 @@ function App() {
   const addToFavourite = (movie) => {
     console.log(movie);
     if (movie !== null && movie !== undefined) {
-      movie["isFavourite"] = "1";
+      movie.isFavourite = "1";
       movie.Title.trim();
       localStorage.setItem(`${movie.ID}`, JSON.stringify(movie));
     }

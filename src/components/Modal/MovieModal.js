@@ -9,6 +9,7 @@ import "../../styles/Modal/MovieModal.css";
 ReactModal.setAppElement('#root');
 
 function MovieModal({ showModal,entertainmentValue,togModal,addFav }) {
+    console.log(entertainmentValue);
 
     return (
         <div>
