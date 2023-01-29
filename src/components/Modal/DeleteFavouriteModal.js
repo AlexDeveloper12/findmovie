@@ -2,6 +2,8 @@ import React from "react";
 import ReactModal from "react-modal";
 import { deleteModalCustomStyles } from "./CustomStyles";
 
+ReactModal.setAppElement('#root');
+
 function DeleteFavouriteModal({ movieID, deleteMovie,toggleModal,isModalOpen }) {
 
     return (

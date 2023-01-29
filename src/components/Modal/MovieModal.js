@@ -1,18 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactModal from "react-modal";
 import { FaStar } from "react-icons/fa";
 import propTypes from "prop-types";
 import MovieDetails from "./MovieDetails";
-import { movieContext } from "../Context/movieContext";
 import { movieInfoCustomStyles } from "./CustomStyles";
+import "../../styles/Modal/MovieModal.css";
 
 ReactModal.setAppElement('#root');
 
-function MovieModal({ showModal, isFavourite }) {
-
-    const { movie, togModal, addFav } = useContext(movieContext);
-    console.log('moviemodal');
-    console.log(movie);
+function MovieModal({ showModal,entertainmentValue,togModal,addFav }) {
 
     return (
         <div>
@@ -22,15 +18,22 @@ function MovieModal({ showModal, isFavourite }) {
             >
                 <div>
 
-                    <button className="btn btn-ok" onClick={() => addFav(movie)} > <FaStar color={isFavourite ? "yellow" : "white"} /></button>
-                    <button className="btn btn-ok" style={{ float: 'right' }} onClick={togModal}>X</button>
+                    <button className="btn btn-ok" onClick={() => addFav(entertainmentValue)} > <FaStar color={entertainmentValue.isFavourite === "1" ? "yellow" : "white"} /></button>
+                    <button className="btn btn-ok btn-x" onClick={()=>togModal(entertainmentValue)}>X</button>
                     <div>
                         <MovieDetails
+                            entertainmentValue={entertainmentValue}
                         />
 
                     </div>
 
+                    <div className="btn-close-container">
+                        <button className="btn btn-ok" type="button" onClick={()=>togModal(entertainmentValue)}>Close</button>
+                    </div>
+
                 </div>
+
+
 
             </ReactModal>
 

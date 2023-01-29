@@ -4,17 +4,17 @@ import "../styles/MovieItem.css";
 import MovieModal from "./Modal/MovieModal";
 import { movieContext } from "./Context/movieContext";
 
-function MovieItem({ showModal, toggleFavourite, isFavourite }) {
+function MovieItem({togModal, movie }) {
 
-    const { movie, togModal } = useContext(movieContext);
+    // const { movie, togModal } = useContext(movieContext);
     return (<>
 
-        <div className="movie-item" onClick={togModal}>
+        <div className="movie-item" onClick={()=>togModal(movie)}>
             <div>
                 <img src={movie.Poster} className="movie-poster" alt={movie.Title} />
             </div>
             <div style={{ minWidth: '50%' }} className="movie-main-info-container">
-                <a onClick={togModal} className="unbounded-font" >
+                <a onClick={()=>togModal(movie)} className="unbounded-font" >
                     {movie.Title} &nbsp;
                     ({movie.Year})
                 </a>
@@ -24,14 +24,7 @@ function MovieItem({ showModal, toggleFavourite, isFavourite }) {
             </div>
 
         </div>
-        {
-            showModal ?
-
-                <MovieModal
-                    showModal={showModal}
-                    isFavourite={isFavourite}
-                /> : null
-        }
+        
     </>
     )
 

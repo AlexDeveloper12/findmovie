@@ -10,6 +10,7 @@ import { movieGenreList } from './MovieGenreList';
 import Favourites from './components/Favourites';
 import ChosenCategory from './components/ChosenCategory';
 import DeleteFavouriteModal from './components/Modal/DeleteFavouriteModal';
+import MovieModal from './components/Modal/MovieModal';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
   const [chosenCategory, setChosenCategory] = useState("");
   const [toggleDeleteModalValue, setToggleDeleteModal] = useState(false);
   const [favListMovieIDChosen, setfavListMovieIDChosen] = useState("");
+  const [clickedEntertainment, setClickedEntertainment] = useState("");
 
   useEffect(() => {
     GetMovies();
@@ -45,8 +47,9 @@ function App() {
     setShowMovies(false);
   }
 
-  const toggleModal = () => {
+  const toggleModal = (entertainmentValue) => {
     setShowModal(!showModal);
+    setClickedEntertainment(entertainmentValue);
   }
 
   const toggleFavourite = () => {
@@ -56,14 +59,14 @@ function App() {
   const searchForMovie = () => {
     //function to filter the movies via what the user searched for
     var updatedMovies = [...movieCategoryFilter];
-    
+
     updatedMovies = updatedMovies.filter(movie => movie.Title.toLowerCase().includes(search.toLowerCase()));
     setMovieCategoryFilter(updatedMovies);
 
   }
 
   const addToFavourite = (movie) => {
-    
+    console.log(movie);
     if (movie !== null && movie !== undefined) {
       movie["isFavourite"] = "1";
       movie.Title.trim();
@@ -73,7 +76,6 @@ function App() {
   }
 
   const filterMoviesByCategory = (categoryChosen) => {
-    console.log(categoryChosen);
     setChosenCategory(categoryChosen);
 
     var filteredMovies = [];
@@ -114,7 +116,7 @@ function App() {
       updatedFavourites.splice(updatedFavourites, 1);
       localStorage.removeItem(entertainmentID);
       //remove from local storage with key which is the movie/series name
-      
+
     }
     //set favourites list and close modal without passing in movie id
     setFavouritesList(updatedFavourites);
@@ -150,8 +152,8 @@ function App() {
         </thead>
         <tbody>
           {
-            favouritesList.length > 0 && favouritesList !== null ?
-              favouritesList.map((value, index) => {
+            favouritesList !== null && favouritesList.length > 0 ?
+              favouritesList.map((value) => {
                 return (
 
                   <Favourites
@@ -204,13 +206,15 @@ function App() {
 
       <div className="movie-container">
         {movieCategoryFilter !== null && movieCategoryFilter.length > 0 ?
-          movieCategoryFilter.map((value, index) => {
+          movieCategoryFilter.map((value) => {
             return (
               <movieContext.Provider value={{ movie: value, togModal: toggleModal, addFav: addToFavourite }}>
                 <MovieItem
                   showModal={showModal}
                   toggleFavourite={toggleFavourite}
                   isFavourite={movieCategoryFilter["isFavourite"]}
+                  togModal={toggleModal}
+                  movie={value}
                 />
               </movieContext.Provider>
             )
@@ -218,6 +222,17 @@ function App() {
           }) : null
         }
       </div>
+
+      {
+        showModal ?
+
+          <MovieModal
+            showModal={showModal}
+            entertainmentValue={clickedEntertainment}
+            togModal={toggleModal}
+            addFav={addToFavourite}
+          /> : null
+      }
 
 
     </div>

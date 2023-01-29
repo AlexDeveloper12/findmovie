@@ -3,14 +3,13 @@ import MovieRating from "../MovieRating";
 import "../../styles/MovieDetails.css";
 import { movieContext } from "../Context/movieContext";
 
-function MovieDetails() {
+function MovieDetails({entertainmentValue}) {
 
-    const {movie,togModal} = useContext(movieContext);
+    // const {movie,togModal} = useContext(movieContext);
     const renderStarRating = () => {
 
-        const ratingFloor = Math.floor(movie.imdbRating);
+        const ratingFloor = Math.floor(entertainmentValue.imdbRating);
         let rating = [];
-        console.log(ratingFloor);
 
         if (ratingFloor > 0) {
             for (var i = 1; i <= ratingFloor; i++) {
@@ -26,25 +25,25 @@ function MovieDetails() {
                 <tbody>
                     <tr>
                         <td>Plot: </td>
-                        <td>{movie.Plot}</td>
+                        <td>{entertainmentValue.Plot}</td>
                     </tr>
                     <tr>
                         <td>
                             Genre:
                         </td>
-                        <td>{movie.Genre}</td>
+                        <td>{entertainmentValue.Genre}</td>
                     </tr>
                     <tr>
                         <td>Runtime: </td>
-                        <td>{movie.Runtime} </td>
+                        <td>{entertainmentValue.Runtime} </td>
                     </tr>
                     <tr>
                         <td>Rating</td>
-                        <td>{movie.Rated}</td>
+                        <td>{entertainmentValue.Rated}</td>
                     </tr>
                     <tr>
                         <td>Release Date:</td>
-                        <td>{movie.Released}</td>
+                        <td>{entertainmentValue.Released}</td>
                     </tr>
                     <tr>
                         <td>Rating:</td>
@@ -52,26 +51,23 @@ function MovieDetails() {
                     </tr>
                     <tr>
                         <td>Director:</td>
-                        <td>{movie.Director}</td>
+                        <td>{entertainmentValue.Director}</td>
                     </tr>
                     <tr>
                         <td>
                             Writer:
                         </td>
                         <td>
-                            {movie.Writer}
+                            {entertainmentValue.Writer}
                         </td>
                     </tr>
-
                 </tbody>
             </table>
             <div className="btn-bottom-container">
-                <button type="button" className="btn-bottom btn btn-ok" onClick={togModal}>Close</button>
+                {/* <button type="button" className="btn-bottom btn btn-ok" onClick={()=>togModal(entertainmentValue)}>Close</button> */}
             </div>
         </>
-
     )
-
 }
 
 export default MovieDetails;
