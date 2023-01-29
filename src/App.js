@@ -47,9 +47,12 @@ function App() {
     setShowMovies(false);
   }
 
-  const toggleModal = (entertainmentValue) => {
+  const toggleModal = (entertainmentID) => {
+    if (entertainmentID !== "") {
+      setClickedEntertainment(entertainmentID);
+    }
     setShowModal(!showModal);
-    setClickedEntertainment(entertainmentValue);
+
   }
 
   const toggleFavourite = () => {
@@ -71,6 +74,7 @@ function App() {
       movie.isFavourite = "1";
       movie.Title.trim();
       localStorage.setItem(`${movie.ID}`, JSON.stringify(movie));
+      toggleModal("");
     }
 
   }
@@ -185,7 +189,19 @@ function App() {
           : null
       }
 
-      <div style={{ marginTop: '2%' }}>
+
+      {
+        showModal ?
+
+          <MovieModal
+            showModal={showModal}
+            entertainmentValue={clickedEntertainment}
+            togModal={toggleModal}
+            addFav={addToFavourite}
+          /> : null
+      }
+
+      <div className="genre-container">
 
         {
           movieGenreList !== null ?
@@ -225,16 +241,6 @@ function App() {
         }
       </div>
 
-      {
-        showModal ?
-
-          <MovieModal
-            showModal={showModal}
-            entertainmentValue={clickedEntertainment}
-            togModal={toggleModal}
-            addFav={addToFavourite}
-          /> : null
-      }
 
 
     </div>

@@ -1,13 +1,10 @@
-import React,{useContext} from "react";
+import React from "react";
 import MovieRating from "../MovieRating";
 import "../../styles/MovieDetails.css";
-import { movieContext } from "../Context/movieContext";
 
 function MovieDetails({entertainmentValue}) {
 
-    // const {movie,togModal} = useContext(movieContext);
     const renderStarRating = () => {
-
         const ratingFloor = Math.floor(entertainmentValue.imdbRating);
         let rating = [];
 
@@ -35,7 +32,7 @@ function MovieDetails({entertainmentValue}) {
                     </tr>
                     <tr>
                         <td>Runtime: </td>
-                        <td>{entertainmentValue.Runtime} </td>
+                        <td>{entertainmentValue.Runtime}</td>
                     </tr>
                     <tr>
                         <td>Rating</td>

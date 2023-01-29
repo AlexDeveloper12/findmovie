@@ -8,34 +8,27 @@ import "../../styles/Modal/MovieModal.css";
 
 ReactModal.setAppElement('#root');
 
-function MovieModal({ showModal,entertainmentValue,togModal,addFav }) {
-    console.log(entertainmentValue);
+function MovieModal({ showModal, entertainmentValue, togModal, addFav }) {
 
     return (
         <div>
             <ReactModal
-                isOpen={showModal}
                 style={movieInfoCustomStyles}
+                isOpen={showModal}
             >
                 <div>
-
                     <button className="btn btn-ok" onClick={() => addFav(entertainmentValue)} > <FaStar color={entertainmentValue.isFavourite === "1" ? "yellow" : "white"} /></button>
-                    <button className="btn btn-ok btn-x" onClick={()=>togModal(entertainmentValue)}>X</button>
+                    <button className="btn btn-ok btn-x" onClick={() => togModal(entertainmentValue)}>X</button>
                     <div>
                         <MovieDetails
                             entertainmentValue={entertainmentValue}
                         />
 
                     </div>
-
                     <div className="btn-close-container">
-                        <button className="btn btn-ok" type="button" onClick={()=>togModal(entertainmentValue)}>Close</button>
+                        <button className="btn btn-ok" type="button" onClick={() => togModal(entertainmentValue)}>Close</button>
                     </div>
-
                 </div>
-
-
-
             </ReactModal>
 
         </div>
