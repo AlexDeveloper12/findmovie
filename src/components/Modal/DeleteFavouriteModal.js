@@ -18,7 +18,7 @@ function DeleteFavouriteModal({ movieID, deleteMovie,toggleModal,isModalOpen }) 
                 
                 <div style={{textAlign:'center'}}>
                     <button className="btn btn-ok" type="button" onClick={() => deleteMovie(movieID)} >Yes</button>
-                    <button className="btn btn-cancel" type="cancel" onClick={toggleModal}>Cancel</button>
+                    <button className="btn btn-cancel" type="cancel" onClick={()=>toggleModal(-1)}>Cancel</button>
                 </div>
             </ReactModal>
         </div>

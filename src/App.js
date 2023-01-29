@@ -1,6 +1,6 @@
 import './App.css';
 import Search from './components/Search';
-import { createContext, useContext, useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieItem from './components/MovieItem';
 import { movieContext } from './components/Context/movieContext';
@@ -116,7 +116,7 @@ function App() {
     //finding if there is a value in the array that has an id equal to one passed in
     const objWithId = updatedFavourites.findIndex((obj) => obj.ID === entertainmentID);
 
-    //if so we splice the array
+    // //if so we splice the array
     if (objWithId > -1) {
       updatedFavourites.splice(updatedFavourites, 1);
       localStorage.removeItem(entertainmentID);
@@ -126,9 +126,12 @@ function App() {
     //set favourites list and close modal without passing in movie id
     setFavouritesList(updatedFavourites);
     toggleDelMovModal(-1);
+    getAllFavourites();
   }
 
   const toggleDelMovModal = (movieID) => {
+    console.log('toggleDelMovModal');
+    console.log(movieID);
     if (movieID > -1) {
       setfavListMovieIDChosen(movieID);
       getAllFavourites();
@@ -142,7 +145,7 @@ function App() {
       <Tabs>
         <TabList>
           <Tab>Home</Tab>
-          <Tab>Favourites</Tab>
+          <Tab onClick={getAllFavourites} >Favourites</Tab>
         </TabList>
 
         <TabPanel>
@@ -240,11 +243,7 @@ function App() {
                 </tbody>
               </table>
               : <tr><td><span className="unbounded-font">There are currently no values in the Favourites list.</span> </td></tr>
-
-
-
           }
-
 
           {
             toggleDeleteModalValue ?

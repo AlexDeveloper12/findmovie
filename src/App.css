@@ -84,7 +84,7 @@
 }
 
 .favourite-container thead tr {
-  background-color: #009879;
+  background-color: #2d55ff;
   color: #ffffff;
   
 }
@@ -103,7 +103,7 @@
 }
 
 .favourite-container tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  background-color: white;
 }
 
 .favourite-container tbody tr:hover {
