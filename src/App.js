@@ -126,6 +126,7 @@ function App() {
   const toggleDelMovModal = (movieID) => {
     if (movieID > -1) {
       setfavListMovieIDChosen(movieID);
+      getAllFavourites();
     }
     setToggleDeleteModal(!toggleDeleteModalValue);
   }
@@ -143,8 +144,6 @@ function App() {
           <tr>
             <th colSpan={2}>Favourites list</th>
           </tr>
-
-
           <tr>
             <th>Movie/Series</th>
             <th>Action(s)</th>
@@ -155,7 +154,6 @@ function App() {
             favouritesList !== null && favouritesList.length > 0 ?
               favouritesList.map((value) => {
                 return (
-
                   <Favourites
                     favouriteItem={value}
                     deleteMovie={removeFromFavourites}
@@ -164,7 +162,7 @@ function App() {
                   />
                 )
               })
-              : <tr> <td> There are currently no values in the Favourites list.</td></tr>
+              : <tr><td>There are currently no values in the Favourites list.</td></tr>
 
           }
         </tbody>
