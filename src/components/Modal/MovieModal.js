@@ -1,6 +1,5 @@
 import React from "react";
 import ReactModal from "react-modal";
-import { FaStar } from "react-icons/fa";
 import propTypes from "prop-types";
 import MovieDetails from "./MovieDetails";
 import { movieInfoCustomStyles } from "./CustomStyles";
@@ -17,7 +16,7 @@ function MovieModal({ showModal, entertainmentValue, togModal, addFav }) {
                 isOpen={showModal}
             >
                 <div>
-                    <button className="btn btn-ok" onClick={() => addFav(entertainmentValue)} > <FaStar color={entertainmentValue.isFavourite === "1" ? "yellow" : "white"} /></button>
+                    <button className="btn btn-ok" onClick={() => addFav(entertainmentValue)} > Add to favourites</button>
                     <button className="btn btn-ok btn-x" onClick={() => togModal(entertainmentValue)}>X</button>
                     <div>
                         <MovieDetails

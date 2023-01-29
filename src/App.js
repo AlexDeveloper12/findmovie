@@ -145,6 +145,7 @@ function App() {
 
       {
         favouritesList !== null && favouritesList.length > 0 ?
+
           <table className="favourite-container">
             <thead>
               <tr>
