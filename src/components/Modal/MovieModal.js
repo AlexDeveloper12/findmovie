@@ -7,7 +7,7 @@ import "../../styles/Modal/MovieModal.css";
 
 ReactModal.setAppElement('#root');
 
-function MovieModal({ showModal, entertainmentValue, togModal, addFav }) {
+function MovieModal({ showModal, entertainmentValue, togModal, addFav, isFavourite }) {
 
     return (
         <div>
@@ -16,7 +16,7 @@ function MovieModal({ showModal, entertainmentValue, togModal, addFav }) {
                 isOpen={showModal}
             >
                 <div>
-                    <button className="btn btn-ok" onClick={() => addFav(entertainmentValue)} > Add to favourites</button>
+                    <button className="btn btn-ok" onClick={() => addFav(entertainmentValue)} > { isFavourite > -1 ? <span>Remove from favourites</span> : <span>Add to favourites</span> } </button>
                     <button className="btn btn-ok btn-x" onClick={() => togModal(entertainmentValue)}>X</button>
                     <div>
                         <MovieDetails

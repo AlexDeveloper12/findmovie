@@ -1,6 +1,6 @@
 import './App.css';
 import Search from './components/Search';
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieItem from './components/MovieItem';
 import { movieContext } from './components/Context/movieContext';
@@ -48,12 +48,16 @@ function App() {
     setShowMovies(false);
   }
 
-  const toggleModal = (entertainmentID) => {
-    if (entertainmentID !== "") {
-      setClickedEntertainment(entertainmentID);
+  const toggleModal = (entertainmentValue) => {
+    if(entertainmentValue!==null){
+      console.log(entertainmentValue)
+      setClickedEntertainment(entertainmentValue);
+      const objWithId = favouritesList.findIndex((obj) => obj.ID === entertainmentValue["ID"]);
+      console.log(objWithId);
+      setFavourite(objWithId);
     }
-    setShowModal(!showModal);
 
+    setShowModal(!showModal);
   }
 
   const toggleFavourite = () => {
@@ -130,14 +134,13 @@ function App() {
   }
 
   const toggleDelMovModal = (movieID) => {
-    console.log('toggleDelMovModal');
-    console.log(movieID);
     if (movieID > -1) {
       setfavListMovieIDChosen(movieID);
       getAllFavourites();
     }
     setToggleDeleteModal(!toggleDeleteModalValue);
   }
+
 
   return (
     <div className="App">
@@ -164,6 +167,7 @@ function App() {
                 entertainmentValue={clickedEntertainment}
                 togModal={toggleModal}
                 addFav={addToFavourite}
+                isFavourite={favourite}
               /> : null
           }
 
