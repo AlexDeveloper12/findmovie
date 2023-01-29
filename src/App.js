@@ -202,7 +202,6 @@ function App() {
       }
 
       <div className="genre-container">
-
         {
           movieGenreList !== null ?
 
