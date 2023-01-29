@@ -139,34 +139,38 @@ function App() {
         searchMovie={searchForMovie}
       />
 
-      <table className="favourite-container">
-        <thead>
-          <tr>
-            <th colSpan={2}>Favourites list</th>
-          </tr>
-          <tr>
-            <th>Movie/Series</th>
-            <th>Action(s)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            favouritesList !== null && favouritesList.length > 0 ?
-              favouritesList.map((value) => {
-                return (
-                  <Favourites
-                    favouriteItem={value}
-                    deleteMovie={removeFromFavourites}
-                    toggleDeleteModal={toggleDelMovModal}
-                    isModalOpen={toggleDeleteModalValue}
-                  />
-                )
-              })
-              : <tr><td>There are currently no values in the Favourites list.</td></tr>
+      {
+        favouritesList !== null && favouritesList.length > 0 ?
+          <table className="favourite-container">
+            <thead>
+              <tr>
+                <th colSpan={2}>Favourites list</th>
+              </tr>
+              <tr>
+                <th>Movie/Series</th>
+                <th>Action(s)</th>
+              </tr>
+            </thead>
+            <tbody>
 
-          }
-        </tbody>
-      </table>
+              {
+                favouritesList.map((value) => {
+                  return (
+                    <Favourites
+                      favouriteItem={value}
+                      deleteMovie={removeFromFavourites}
+                      toggleDeleteModal={toggleDelMovModal}
+                      isModalOpen={toggleDeleteModalValue}
+                    />
+                  )
+                })
+              }
+            </tbody>
+          </table>
+          : <tr><td><span className="unbounded-font">There are currently no values in the Favourites list.</span> </td></tr>
+
+      }
+
 
       {
         toggleDeleteModalValue ?
