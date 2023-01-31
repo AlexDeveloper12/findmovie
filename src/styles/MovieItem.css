@@ -3,19 +3,19 @@
     margin-left:20px;
     /* flex:1; */
     flex-direction: column;
-    height: 12%;
-    width: 12%;
+    height: 480px;
+    width: 200px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    padding:1%;
+    padding: 2rem;;
 }
 
-.unbounded-font{
+/* .unbounded-font{
     font-family: 'Unbounded', cursive;
-}
+} */
 
 .movie-poster{
-    max-width: 70%;
+    width: 100%;
 }
 
 .movie-main-info-container{
