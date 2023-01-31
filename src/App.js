@@ -49,7 +49,7 @@ function App() {
   }
 
   const toggleModal = (entertainmentValue) => {
-    if(entertainmentValue!==null){
+    if (entertainmentValue !== null) {
       console.log(entertainmentValue)
       setClickedEntertainment(entertainmentValue);
       const objWithId = favouritesList.findIndex((obj) => obj.ID === entertainmentValue["ID"]);
@@ -159,6 +159,22 @@ function App() {
             searchMovie={searchForMovie}
           />
 
+          {/* <div className="cards_item">
+            <div className="card">
+              <div className="card_image">
+                <img src="https://picsum.photos/500/300/?image=5"/>
+                <div className="card_content">
+                  <h2 class="card_title">Card Grid Layout</h2>
+                  <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div> */}
+
+
           {
             showModal ?
 
@@ -174,7 +190,6 @@ function App() {
           <div className="genre-container">
             {
               movieGenreList !== null ?
-
                 movieGenreList.map((value) => {
                   return (
                     <Genres
@@ -191,7 +206,7 @@ function App() {
             chosenCategory={chosenCategory}
           />
 
-          <div className="movie-container">
+          <div>
             {movieCategoryFilter !== null && movieCategoryFilter.length > 0 ?
               movieCategoryFilter.map((value) => {
                 return (

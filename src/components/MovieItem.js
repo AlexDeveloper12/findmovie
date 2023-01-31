@@ -5,9 +5,19 @@ import "../styles/MovieItem.css";
 function MovieItem({ togModal, movie }) {
     return (
         <>
-            <div className="movie-item" onClick={() => togModal(movie)}>
+            <div >
                 <div>
-                    <img src={movie.Poster} className="movie-poster" alt={movie.Title} />
+                    <img src={movie.Poster} alt={movie.Title} width={400} height={400} />
+                    <div>
+                        <h2>{movie.Title}</h2>
+                        <p>{movie.Plot}</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* <div className="movie-item" onClick={() => togModal(movie)}>
+                <div>
+                    
                 </div>
                 <div style={{ minWidth: '50%' }} className="movie-main-info-container">
                     <a onClick={() => togModal(movie)} className="unbounded-font" >
@@ -19,7 +29,7 @@ function MovieItem({ togModal, movie }) {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
 
         </>
     )
