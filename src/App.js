@@ -19,7 +19,6 @@ function App() {
 
   const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
-  const [showMovies, setShowMovies] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [favourite, setFavourite] = useState(false);
   const [favouritesList, setFavouritesList] = useState([]);
@@ -48,7 +47,6 @@ function App() {
 
   const handleSearch = (searchText) => {
     setSearch(searchText);
-    setShowMovies(false);
   }
 
   const toggleModal = (entertainmentValue) => {
@@ -84,7 +82,7 @@ function App() {
       localStorage.setItem(`${movie.ID}`, JSON.stringify(movie));
       toggleModal("");
       setShowAlert(true);
-      
+
       setTimeout(() => {
         setShowAlert(false);
       }, 2000)
@@ -104,6 +102,7 @@ function App() {
         return movie.Genre.includes(categoryChosen);
       });
     }
+    setSearch("");
 
     setMovieCategoryFilter(filteredMovies);
   }
