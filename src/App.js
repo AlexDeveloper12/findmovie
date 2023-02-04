@@ -2,6 +2,7 @@ import './App.css';
 import Search from './components/Search';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Tab, Tabs, TabPanel, TabList } from 'react-tabs';
 import MovieItem from './components/MovieItem';
 import { movieContext } from './components/Context/movieContext';
 import Genres from './components/Genres';
@@ -10,7 +11,8 @@ import Favourites from './components/Favourites';
 import ChosenCategory from './components/ChosenCategory';
 import DeleteFavouriteModal from './components/Modal/DeleteFavouriteModal';
 import MovieModal from './components/Modal/MovieModal';
-import { Tab, Tabs, TabPanel, TabList } from 'react-tabs';
+import CustomAlert from './components/Alert/CustomAlert';
+import "./styles/Alert/CustomAlert.css";
 import 'react-tabs/style/react-tabs.css';
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
   const [toggleDeleteModalValue, setToggleDeleteModal] = useState(false);
   const [favListMovieIDChosen, setfavListMovieIDChosen] = useState("");
   const [clickedEntertainment, setClickedEntertainment] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     GetMovies();
@@ -49,7 +52,7 @@ function App() {
   }
 
   const toggleModal = (entertainmentValue) => {
-    if(entertainmentValue!==null){
+    if (entertainmentValue !== null) {
       console.log(entertainmentValue)
       setClickedEntertainment(entertainmentValue);
       const objWithId = favouritesList.findIndex((obj) => obj.ID === entertainmentValue["ID"]);
@@ -80,6 +83,11 @@ function App() {
       movie.Title.trim();
       localStorage.setItem(`${movie.ID}`, JSON.stringify(movie));
       toggleModal("");
+      setShowAlert(true);
+      
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000)
     }
 
   }
@@ -158,6 +166,14 @@ function App() {
             handleSearch={handleSearch}
             searchMovie={searchForMovie}
           />
+
+          {
+            showAlert ?
+              <CustomAlert alertMessage="Favourite added!" isShown={showAlert} />
+              : null
+          }
+
+
 
           {
             showModal ?

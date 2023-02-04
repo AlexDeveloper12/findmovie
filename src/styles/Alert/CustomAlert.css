@@ -1,0 +1,28 @@
+.fade-in {
+    transition: opacity 1s ease;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.alert-shown {
+    opacity: 1;
+    transition: all 250ms linear;
+  }
+  
+  .alert-hidden {
+    opacity: 0;
+    transition: all 250ms linear;
+  }
+
+.alert-container{
+    margin:20px;
+}
+
+.alert-message{
+    background-color: #2d55ff;
+    padding:10px;
+    color:white;
+}
